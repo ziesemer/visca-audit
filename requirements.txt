@@ -1,0 +1,3 @@
+micropython-rp2-rpi_pico2-stubs
+mpremote
+mpy_cross

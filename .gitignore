@@ -1,0 +1,13 @@
+.*
+!/.cspell/
+!/.github/
+!/.vscode/
+/.vscode/*
+/bin/
+!/.vscode/launch.json
+**/__pycache__/
+!.gitattributes
+!.gitignore
+!.markdownlint.json
+!.micropico
+!.pylintrc

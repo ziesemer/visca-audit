@@ -1,0 +1,42 @@
+[MAIN]
+init-hook=
+	import sys;
+	sys.path.extend(["src/visca_audit", "tests"])
+
+[MESSAGES CONTROL]
+disable=
+	C0111, # missing-docstring
+	C0112, # empty-docstring
+	C0325, # superfluous-parens
+	R0901, # too-many-ancestors
+	R0902, # too-many-instance-attributes
+	R0903, # too-few-public-methods
+	R0904, # too-many-public-methods
+	R0912, # too-many-branches
+	R0914, # too-many-local
+	R0915, # too-many-statements
+	R1702, # too-many-nested-blocks
+	W0613, # unused-argument
+	W0703, # broad-except
+ignored-modules=machine,micropython,time,usb.device
+
+[BASIC]
+
+# default: [a-z_][a-z0-9_]{2,30}$
+variable-rgx=[a-z_][a-z0-9_]{0,30}$
+
+# default: 5
+max-args=10
+
+[FORMAT]
+indent-string='\t'
+indent-after-paren=1
+max-line-length=120
+expected-line-ending-format=LF
+
+# default: ^\s*(# )?<?https?://\S+>?$
+# - https://docs.pylint.org/en/1.6.0/features.html#id31
+ignore-long-lines=^\s*(# ( *- )?)?<?https?://\S+>?$
+
+[TYPECHECK]
+ignored-modules=asyncio,machine,micropython,time,usb

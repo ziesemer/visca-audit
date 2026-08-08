@@ -1,0 +1,53 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-python.python",
+			"visualstudioexptteam.vscodeintellicode",
+			"ms-python.vscode-pylance",
+			"paulober.pico-w-go"
+		]
+	},
+	"settings": {
+		"files.trimTrailingWhitespace": true,
+		"files.trimFinalNewlines": true,
+		"files.eol": "\n",
+		"micropico.syncFolder": "src",
+		"micropico.additionalSyncFolders": [
+			"tests"
+		],
+		"powershell.startAutomatically": false,
+		"python.analysis.diagnosticSeverityOverrides": {
+			"reportMissingModuleSource": "none"
+		},
+		"python.analysis.extraPaths": [
+			"src/visca_audit",
+			"tests/tests",
+			".venv/Lib/site-packages"
+		],
+		"python.analysis.stubPath": ".venv/Lib/site-packages",
+		"python.analysis.typeCheckingMode": "standard",
+		"python.analysis.typeshedPaths": [
+			// - https://micropython-stubs.readthedocs.io/en/main/22_vscode.html#vscode-sample-workspace-configuration-file
+			".venv/Lib/site-packages"
+		],
+		"python.languageServer": "Pylance",
+		"cSpell.customDictionaries": {
+			"custom-dictionary-workspace": {
+				"name": "custom-dictionary-workspace",
+				"path": "${workspaceFolder:visca-audit}/.cspell/custom-dictionary-workspace.txt",
+				"addWords": true,
+				"scope": "workspace"
+			}
+		},
+		"[markdown]": {
+			"editor.insertSpaces": false,
+			"editor.detectIndentation": false
+		},
+		"markdown.validate.enabled": true
+	}
+}

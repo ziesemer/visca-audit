@@ -1,0 +1,12 @@
+# Custom Dictionary Words
+AVKANS
+baudrate
+microcontrollers
+OLED
+Pico
+tele
+Tenveo
+TEVO
+uart
+Visca
+Zowietek
