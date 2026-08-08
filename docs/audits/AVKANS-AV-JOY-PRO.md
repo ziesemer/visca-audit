@@ -15,12 +15,26 @@
 3. ✅ Has "Quick Call" feature for presets.
 	1. ⚠️ As Camera Preset 0 is not usable (above), the "0" key here is also wasted and unusable for Quick Call.
 4. ⚠️ The "Backlight" and "Key Brightness" settings are troublesome.
-Neither appears to save after a reboot.
-Then even at least sometimes, after setting the "Key Brightness" to 2, the keys are actually lit at 10 - until changing to a non-2 value and then back to 2 again.
+	Neither appears to save after a reboot.
+	1. Then even at least sometimes, after setting the "Key Brightness" to 2, the keys are actually lit at 10 - until changing to a non-2 value and then back to 2 again.
 5. ⚠️ Cannot find documentation or explanation for what the difference is for configuring the camera "Mode" between "Normal 1" and "Visca 2".
 6. ⚠️ When switching between cameras and the controller tries to read the current settings from the prior camera, the "Auto Focus" indicator does not re-illuminate upon connection, even though Auto Focus is turned on, and the cameras reply as such (confirmed with a signal capture).
-Camera 1 works as expected, but Camera 2 and Camera 3 both exhibit this.
-I was able to reproduce this from a simulation ([`visca_responder.py`](../../src/visca_audit/visca_responder.py)) that sends identical responses regardless of camera address.
+	1. Camera 1 works as expected, but Camera 2 and Camera 3 both exhibit this.
+	2. I was able to reproduce this from a simulation ([`visca_responder.py`](../../src/visca_audit/visca_responder.py)) that sends identical responses regardless of camera address.
+7. ⚠️ Switching delay between cameras - it currently takes about 1.2 seconds to switch from camera to camera.
+	1. Interestingly, each camera switch begins with sending 3 "stop" commands first to the prior camera (focus, zoom, P/T).
+		The controller should know which commands are in-progress, if any, and spend the time only cancelling those that may still be in-progress (having received no prior completion or error responses for).
+		This takes about 0.3 seconds.
+		1. ⚠️ This also comes with the consequence of potentially stopping in-flight commands from another controller, which should not be aborted.
+	2. The controller also waits about 0.8 seconds, then sends 2 "Tally Mode - Lights Off" commands.
+		1. The current manual, on page 13, indicates that the "PGM Signal" should be able to select "OFF, PGM In or PGM Out".
+			It seems like "Off" would be ideal here, but I only have options for "Out" and "In".
+			In the menu under "Custom / Other", I also have a few other settings that are not in the manual.
+			One of those is "Cam Tally", with options of "Off", "Low", and "High" - though this is already set to "Off".
+	3. Also maybe an option to not query the camera at all upon selection, and just remember the prior settings per-camera.
+		(This would have to assume that the controller is the only controller controlling the cameras.)
+
+This has a chance to be a *fantastic* controller, with what should hopefully be a few fast and easy firmware updates.
 
 ### Support
 
