@@ -1,7 +1,7 @@
 [MAIN]
 init-hook=
 	import sys;
-	sys.path.extend(["src/visca_audit", "tests"])
+	sys.path.extend(["src", "tests"])
 
 [MESSAGES CONTROL]
 disable=
