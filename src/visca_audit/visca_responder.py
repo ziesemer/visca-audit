@@ -61,9 +61,11 @@ class ViscaResponder():
 					if c == 5:
 						if (b[2] == 0x04):
 							if (b[3] == 0x38):
+								# Focus Mode = Auto Focus
 								self.write(ra + b"\x50\x02\xff")
 								await sw.drain()
 							elif (b[3] == 0x39):
+								# Auto Exposure = Full Auto
 								self.write(ra + b"\x50\x00\xff")
 								await sw.drain()
 
